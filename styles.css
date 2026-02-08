@@ -60,6 +60,20 @@
   top: 1rem;
 }
 
+/* ===== Blur Fade Animation ===== */
+.blur-fade {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(6px);
+  transition: opacity 0.4s ease-out, filter 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.blur-fade.is-visible {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(-6px);
+}
+
 /* ===== Base ===== */
 *,
 *::before,

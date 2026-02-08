@@ -134,4 +134,29 @@
       update();
     });
   }
+  // ----- Blur Fade (IntersectionObserver) -----
+  var blurEls = document.querySelectorAll(".blur-fade");
+  if (blurEls.length && "IntersectionObserver" in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var delay = parseFloat(el.getAttribute("data-delay") || "0");
+          setTimeout(function () {
+            el.classList.add("is-visible");
+          }, delay * 1000);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "-50px" });
+
+    blurEls.forEach(function (el) {
+      observer.observe(el);
+    });
+  } else {
+    // Fallback: show everything immediately
+    blurEls.forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+  }
 })();
