@@ -725,96 +725,149 @@ a:hover {
   margin-bottom: 0.4rem;
 }
 
-/* ===== Projects ===== */
+/* ===== Projects (Sticky Scroll Reveal) ===== */
 .projects {
   background: var(--bg-elevated);
 }
 
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+.projects .container {
+  max-width: 72rem;
 }
 
-.project-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.dark .project-card {
-  background: var(--bg-elevated);
-  border-color: var(--border);
-}
-
-.project-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow);
-}
-
-.project-header {
+.sticky-scroll {
+  max-width: 72rem;
+  margin: 0 auto;
+  height: 30rem;
+  overflow-y: auto;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  gap: 2.5rem;
+  padding: 2.5rem 1.5rem;
+  border-radius: var(--radius);
+  background-color: rgb(15 23 42);
+  transition: background-color 0.6s ease;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
 }
 
-.project-card h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin: 0;
+.sticky-scroll::-webkit-scrollbar {
+  width: 6px;
 }
 
-.project-badge {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  background: rgba(185, 28, 28, 0.12);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
+.sticky-scroll::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.project-card>p {
+.sticky-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 3px;
+}
+
+.sticky-scroll-items {
+  flex: 1;
+  min-width: 0;
+}
+
+.sticky-scroll-item {
+  padding: 2.5rem 0;
+  transition: opacity 0.4s ease;
+}
+
+.sticky-scroll-item.is-dim {
+  opacity: 0.3;
+}
+
+.sticky-scroll-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0 0 0.75rem;
+}
+
+.sticky-scroll-desc {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: #cbd5e1;
+  line-height: 1.6;
+  max-width: 28rem;
   margin: 0 0 1rem;
-  line-height: 1.5;
 }
 
-.project-tags {
+.sticky-scroll-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
-.project-tags span {
-  font-size: 0.8rem;
-  background: var(--border);
-  color: var(--text-muted);
-  padding: 0.25rem 0.6rem;
+.sticky-scroll-tags span {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.55rem;
   border-radius: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
 }
 
-.dark .project-tags span {
-  background: var(--border);
-  color: var(--text-muted);
-}
-
-.project-links {
+.sticky-scroll-links {
   display: flex;
   gap: 1rem;
 }
 
-.project-links a {
-  font-size: 0.9rem;
+.sticky-scroll-links a {
+  font-size: 0.85rem;
   font-weight: 500;
+  color: #38bdf8;
 }
 
+.sticky-scroll-links a:hover {
+  color: #7dd3fc;
+}
+
+.sticky-scroll-spacer {
+  height: 10rem;
+}
+
+/* Sticky visual card */
+.sticky-scroll-visual {
+  display: none;
+  position: sticky;
+  top: 2.5rem;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .sticky-scroll-visual {
+    display: block;
+  }
+}
+
+.sticky-scroll-card {
+  width: 20rem;
+  height: 15rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.6s ease;
+  background: linear-gradient(to bottom right, #06b6d4, #10b981);
+}
+
+.sticky-scroll-card-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.sticky-scroll-card img,
+.sticky-scroll-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 
 /* ===== Footer ===== */

@@ -134,4 +134,73 @@
       update();
     });
   }
+  // ----- Sticky Scroll Reveal (Projects) -----
+  var stickyScroll = document.getElementById("sticky-scroll");
+  var stickyCard = document.getElementById("sticky-scroll-card");
+
+  if (stickyScroll && stickyCard) {
+    var items = stickyScroll.querySelectorAll(".sticky-scroll-item");
+    var activeIndex = 0;
+
+    function updateStickyScroll() {
+      var scrollTop = stickyScroll.scrollTop;
+      var scrollHeight = stickyScroll.scrollHeight - stickyScroll.clientHeight;
+      var progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0;
+
+      // Determine active card based on scroll progress
+      var breakpoints = [];
+      for (var i = 0; i < items.length; i++) {
+        breakpoints.push(i / items.length);
+      }
+
+      var closest = 0;
+      var closestDist = Math.abs(progress - breakpoints[0]);
+      for (var j = 1; j < breakpoints.length; j++) {
+        var dist = Math.abs(progress - breakpoints[j]);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closest = j;
+        }
+      }
+
+      if (closest !== activeIndex) {
+        activeIndex = closest;
+
+        // Update item opacity
+        for (var k = 0; k < items.length; k++) {
+          if (k === activeIndex) {
+            items[k].classList.remove("is-dim");
+          } else {
+            items[k].classList.add("is-dim");
+          }
+        }
+
+        // Update container background
+        var bg = items[activeIndex].getAttribute("data-bg");
+        if (bg) {
+          stickyScroll.style.backgroundColor = bg;
+        }
+
+        // Update gradient card
+        var gradient = items[activeIndex].getAttribute("data-gradient");
+        if (gradient) {
+          stickyCard.style.background = gradient;
+        }
+
+        // Update card label with project name
+        var title = items[activeIndex].querySelector(".sticky-scroll-title");
+        var label = stickyCard.querySelector(".sticky-scroll-card-label");
+        if (title && label) {
+          label.textContent = title.textContent;
+        }
+      }
+    }
+
+    // Initialize
+    updateStickyScroll();
+
+    stickyScroll.addEventListener("scroll", function () {
+      requestAnimationFrame(updateStickyScroll);
+    }, { passive: true });
+  }
 })();
