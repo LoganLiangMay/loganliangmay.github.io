@@ -1184,6 +1184,8 @@ a:hover {
 }
 
 .footer-theme-toggle {
+  -webkit-appearance: none;
+  appearance: none;
   display: inline-flex;
   align-items: center;
   padding: 0.25rem;
@@ -1192,6 +1194,8 @@ a:hover {
   border-radius: 999px;
   cursor: pointer;
   transition: border-color 0.2s, background 0.2s;
+  position: relative;
+  z-index: 2;
 }
 
 .footer-theme-toggle:hover {

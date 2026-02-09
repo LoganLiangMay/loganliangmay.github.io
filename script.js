@@ -44,12 +44,18 @@
     applyTheme(!document.documentElement.classList.contains(DARK));
   }
 
-  [].forEach.call(document.querySelectorAll("#theme-toggle-header"), function (el) {
-    if (el) el.addEventListener("click", toggleTheme);
-  });
-
   // Set theme before first paint to avoid flash
   initTheme();
+
+  // Bind toggle – use getElementById for reliability
+  var headerToggle = document.getElementById("theme-toggle-header");
+  if (headerToggle) {
+    headerToggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleTheme();
+    });
+  }
 
   // Optional: listen for system preference changes when no manual preference is set
   if (window.matchMedia && !getStored()) {
