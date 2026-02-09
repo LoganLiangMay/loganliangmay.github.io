@@ -130,6 +130,13 @@ a:hover {
   position: relative;
 }
 
+@media (min-width: 769px) {
+  .nav {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
 .nav-logo {
   font-family: var(--font-display);
   font-size: 1.35rem;
@@ -273,60 +280,11 @@ a:hover {
   }
 }
 
-/* Local Theme Toggle in Hero */
-.resume-theme-toggle {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 50%;
-  color: var(--text);
-  transition: background-color 0.2s;
-  display: flex;
-  /* Ensure icon is displayed */
-}
-
-.resume-theme-toggle:hover {
-  background-color: rgba(128, 128, 128, 0.1);
-}
-
 /* Content Typography */
 .resume-content-wrapper {
   max-width: 600px;
   margin: 0 auto;
   width: 100%;
-}
-
-.resume-header {
-  margin-bottom: 3rem;
-}
-
-.resume-title {
-  font-size: 1.1rem;
-  font-weight: 400;
-  margin: 0 0 2rem;
-  opacity: 0.8;
-}
-
-.resume-identity {
-  margin-bottom: 2rem;
-}
-
-.resume-name {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 0 0 0.5rem;
-  text-transform: uppercase;
-}
-
-.resume-role {
-  font-size: 1.1rem;
-  font-weight: 400;
-  margin: 0;
-  opacity: 0.8;
 }
 
 /* Experience List */
