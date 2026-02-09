@@ -183,6 +183,13 @@ a:hover {
   background: var(--text);
 }
 
+/* Nav theme toggle (pill) */
+.nav-theme {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 /* Theme icon visibility */
 .dark .theme-icon.sun {
   display: none;
