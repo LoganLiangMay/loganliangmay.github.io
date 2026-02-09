@@ -44,7 +44,7 @@
     applyTheme(!document.documentElement.classList.contains(DARK));
   }
 
-  [].forEach.call(document.querySelectorAll("#theme-toggle, #theme-toggle-footer"), function (el) {
+  [].forEach.call(document.querySelectorAll("#theme-toggle-footer"), function (el) {
     if (el) el.addEventListener("click", toggleTheme);
   });
 
